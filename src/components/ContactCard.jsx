@@ -13,9 +13,9 @@ export const ContactCard = props => {
 
     const handleDelete = async () => {
     try {
-        const resp = await contactServices.deleteContact('yellowpinkblue', contactToDelete)
+        const resp = await contactServices.deleteContact('yellowpinkblue', props.cid)
         dispatch({ type: 'get_agenda_by_slug', payload: resp.contacts })
-        setContactToDelete(null)
+        
     } catch (error) {
         console.error(error)
     }
@@ -47,7 +47,7 @@ export const ContactCard = props => {
                         <button className="btn btn-outline-primary me-2 mb-2" onClick={handleEdit}>
                             <i className="fas fa-pencil-alt"></i>
                         </button>
-                        <button className="btn btn-outline-danger me-2 mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => setContactToDelete(props.cid)}>
+                        <button className="btn btn-outline-danger me-2 mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <i className="fas fa-trash-alt"></i>
                         </button>
 
